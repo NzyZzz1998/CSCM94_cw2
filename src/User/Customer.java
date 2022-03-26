@@ -9,12 +9,12 @@ public class Customer extends User{
     //private firstName     (inherited)
     //private lastName      (inherited)
     private String address;
-    private int custId;
+    private String custId;
     private Order[] orderHistory;
 
     //CONSTRUCTOR
     //======
-    public Customer(String firstName, String lastName, String address, int custId) {
+    public Customer(String firstName, String lastName, String address, String custId) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setAddress(address);
@@ -27,7 +27,7 @@ public class Customer extends User{
         this.address = address;
     }
 
-    private void setCustId(int custId) {
+    private void setCustId(String custId) {
         this.custId = custId;
     }
 
@@ -37,7 +37,7 @@ public class Customer extends User{
         return this.address;
     }
 
-    public int getCustId() {
+    public String getCustId() {
         return this.custId;
     }
 

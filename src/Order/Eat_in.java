@@ -1,21 +1,27 @@
 package Order;
 
+
 import Menu.MenuItem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Eat_in extends Order{
     private int tableID;
-    private int waiterID;
+    private String waiterID;
 
 
-
-    public Eat_in(int tableID, int waiterID, ArrayList<MenuItem> items) {
+    public Eat_in(String customID, ArrayList<MenuItem> items, boolean approval, int tableID, String waiterID) {
+        super(customID, items, approval);
         this.tableID = tableID;
         this.waiterID = waiterID;
-        record(items);
+    }
+
+    public Eat_in(String customID, int tableID, String waiterID, ArrayList<MenuItem> items, boolean approval) {
+        this.tableID = tableID;
+        this.waiterID = waiterID;
+        record(customID, items, approval);
     }
 
 
@@ -27,11 +33,11 @@ public class Eat_in extends Order{
         this.tableID = tableID;
     }
 
-    public int getWaiterID() {
+    public String getWaiterID() {
         return waiterID;
     }
 
-    public void setWaiterID(int waiterID) {
+    public void setWaiterID(String waiterID) {
         this.waiterID = waiterID;
     }
 
@@ -44,17 +50,10 @@ public class Eat_in extends Order{
     }
 
 
-
-    @Override
-    public void record(ArrayList<MenuItem> items) {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Please enter the customer ID:");
-        int id = sc.nextInt();
-        setCustomID(id);
+    public void record(String customID, ArrayList<MenuItem> items, boolean approval) {
+        setCustomID(customID);
         setItems(items);
         setTime(LocalDateTime.now());
-        setOrderComplete(false);
-
+        setApproval(approval);
     }
 }

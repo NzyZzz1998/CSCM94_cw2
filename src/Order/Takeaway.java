@@ -1,5 +1,6 @@
 package Order;
 
+import Database.database;
 import Menu.MenuItem;
 
 import java.time.LocalDateTime;
@@ -9,14 +10,16 @@ import java.util.Scanner;
 public class Takeaway extends Order{
     private LocalDateTime arriveTime;
 
-    /*public Takeaway(int customID, String[] items, boolean orderComplete, LocalDateTime time, LocalDateTime arriveTime) {
-        super(customID, items, orderComplete, time);
-        this.arriveTime = arriveTime;
-    }*/
+    public Takeaway() {
+    }
 
-    public Takeaway(LocalDateTime arriveTime, ArrayList<MenuItem> items) {
+    public Takeaway(String customID, ArrayList<MenuItem> items, boolean approval, LocalDateTime time) {
+        super(customID, items, approval);
+    }
+
+    public Takeaway(String customerID, LocalDateTime arriveTime, ArrayList<MenuItem> items, boolean approval) {
         this.arriveTime = arriveTime;
-        record(items);
+        record(customerID, items, approval);
     }
 
     public LocalDateTime getArriveTime() {
@@ -34,16 +37,12 @@ public class Takeaway extends Order{
                 '}';
     }
 
-    @Override
-    public void record(ArrayList<MenuItem> items) {
+
+    public void record(String customerID, ArrayList<MenuItem> items, boolean approval) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Please enter the customer ID:");
-        int id = sc.nextInt();
-        setCustomID(id);
+        setCustomID(customerID);
         setItems(items);
-
         setTime(LocalDateTime.now());
-        setOrderComplete(false);
+        setApproval(approval);
     }
 }

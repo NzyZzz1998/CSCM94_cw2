@@ -1,20 +1,28 @@
 package Order;
 
+import Database.database;
 import Menu.MenuItem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Delivery extends Order{
     private String address;
-    private int driveID;
+    private String driveID;
+    private boolean driveComplete;
 
 
-    public Delivery(String address, int driveID, ArrayList<MenuItem> items) {
+
+    public Delivery(String customID, ArrayList<MenuItem> items, boolean approval, LocalDateTime time, database a, String address, String driveID) {
+        super(customID, items, approval);
         this.address = address;
         this.driveID = driveID;
-        record(items);
+    }
+
+    public Delivery(String customID, String driveID, ArrayList<MenuItem> items, boolean approval, String address) {
+        this.driveID = driveID;
+        record(customID, items, approval, address);
     }
 
     public String getAddress() {
@@ -25,12 +33,20 @@ public class Delivery extends Order{
         this.address = address;
     }
 
-    public int getDriveID() {
+    public String getDriveID() {
         return driveID;
     }
 
-    public void setDriveID(int driveID) {
+    public void setDriveID(String driveID) {
         this.driveID = driveID;
+    }
+
+    public boolean isDriveComplete() {
+        return driveComplete;
+    }
+
+    public void setDriveComplete(boolean driveComplete) {
+        this.driveComplete = driveComplete;
     }
 
     @Override
@@ -41,16 +57,12 @@ public class Delivery extends Order{
                 '}';
     }
 
-    @Override
-    public void record(ArrayList<MenuItem> items) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("Please enter the customer ID:");
-        int id = sc.nextInt();
-        setCustomID(id);
-        System.out.println("Please enter the item:");
-
+    public void record(String customID, ArrayList<MenuItem> items, boolean approval, String address) {
+        setCustomID(customID);
+        setItems(items);
         setTime(LocalDateTime.now());
-        setOrderComplete(false);
+        setApproval(approval);
+        setAddress(address);
     }
 }
