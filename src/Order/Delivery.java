@@ -3,7 +3,7 @@ package Order;
 
 import Menu.MenuItem;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 
 
@@ -14,7 +14,7 @@ public class Delivery extends Order{
 
 
 
-    public Delivery(String customID, ArrayList<MenuItem> items, boolean approval, LocalDateTime time, String address, String driveID) {
+    public Delivery(String customID, ArrayList<MenuItem> items, boolean approval, String address, String driveID) {
         super(customID, items, approval);
         this.address = address;
         this.driveID = driveID;
