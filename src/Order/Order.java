@@ -1,6 +1,6 @@
 package Order;
 
-import Database.database;
+
 import Menu.MenuItem;
 
 import java.time.LocalDateTime;
@@ -14,8 +14,7 @@ public abstract class Order {
     private boolean chefComplete;
     private boolean approval;
 
-    public Order() {
-    }
+
 
     public Order(String customID, ArrayList<MenuItem> items, boolean approval) {
         this.customID = customID;
@@ -86,8 +85,4 @@ public abstract class Order {
                 '}';
     }
 
-    //public abstract void record();
-
-    //public abstract void record(ArrayList<MenuItem> items, boolean approval);
-    //public abstract boolean additem();
 }

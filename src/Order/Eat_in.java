@@ -3,7 +3,7 @@ package Order;
 
 import Menu.MenuItem;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 
 
@@ -18,11 +18,6 @@ public class Eat_in extends Order{
         this.waiterID = waiterID;
     }
 
-    public Eat_in(String customID, int tableID, String waiterID, ArrayList<MenuItem> items, boolean approval) {
-        this.tableID = tableID;
-        this.waiterID = waiterID;
-        record(customID, items, approval);
-    }
 
 
     public int getTableID() {
@@ -49,11 +44,4 @@ public class Eat_in extends Order{
                 '}';
     }
 
-
-    public void record(String customID, ArrayList<MenuItem> items, boolean approval) {
-        setCustomID(customID);
-        setItems(items);
-        setTime(LocalDateTime.now());
-        setApproval(approval);
-    }
 }

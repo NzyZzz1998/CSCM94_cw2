@@ -1,6 +1,6 @@
 package Order;
 
-import Database.database;
+
 import Menu.MenuItem;
 
 import java.time.LocalDateTime;
@@ -14,16 +14,12 @@ public class Delivery extends Order{
 
 
 
-    public Delivery(String customID, ArrayList<MenuItem> items, boolean approval, LocalDateTime time, database a, String address, String driveID) {
+    public Delivery(String customID, ArrayList<MenuItem> items, boolean approval, LocalDateTime time, String address, String driveID) {
         super(customID, items, approval);
         this.address = address;
         this.driveID = driveID;
     }
 
-    public Delivery(String customID, String driveID, ArrayList<MenuItem> items, boolean approval, String address) {
-        this.driveID = driveID;
-        record(customID, items, approval, address);
-    }
 
     public String getAddress() {
         return address;
@@ -57,12 +53,4 @@ public class Delivery extends Order{
                 '}';
     }
 
-
-    public void record(String customID, ArrayList<MenuItem> items, boolean approval, String address) {
-        setCustomID(customID);
-        setItems(items);
-        setTime(LocalDateTime.now());
-        setApproval(approval);
-        setAddress(address);
-    }
 }
