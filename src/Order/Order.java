@@ -5,10 +5,11 @@ import Menu.MenuItem;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public abstract class Order {
     private String customID;
-    private ArrayList<MenuItem> items;
+    private ArrayList<MenuItem>[] items;
     private boolean orderComplete;
     private LocalDateTime time;
     private boolean chefComplete;
@@ -16,7 +17,7 @@ public abstract class Order {
 
 
 
-    public Order(String customID, ArrayList<MenuItem> items, boolean approval) {
+    public Order(String customID, ArrayList<MenuItem>[] items, boolean approval) {
         this.customID = customID;
         this.items = items;
         this.approval = approval;
@@ -35,11 +36,11 @@ public abstract class Order {
         this.customID = customID;
     }
 
-    public ArrayList<MenuItem> getItems() {
+    public ArrayList<MenuItem>[] getItems() {
         return items;
     }
 
-    public void setItems(ArrayList<MenuItem> items) {
+    public void setItems(ArrayList<MenuItem>[] items) {
         this.items = items;
     }
 
@@ -78,11 +79,10 @@ public abstract class Order {
     @Override
     public String toString() {
         return "Order{" +
-                "customID=" + customID +
-                ", items=" + items +
-                ", orderComplete=" + orderComplete +
-                ", time=" + time +
-                '}';
+                "customID " + customID +
+                " items " + Arrays.toString(items) +
+                " orderComplete " + orderComplete +
+                " time " + time +
+                " }";
     }
-
 }
